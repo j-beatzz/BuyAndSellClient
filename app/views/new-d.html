@@ -1,0 +1,98 @@
+<div class="error container-fluid" ng-if="error.any">
+	<p><strong>The following error has prevented your ad from being created: </strong></p>
+	<ul>
+		<li ng-repeat="err in error.type">{{err}}</li>
+	</ul>
+
+	<button class="btn btn-default" ng-click="closeErrors()">Close</button>
+</div>
+<header class="container">
+	<h2>Create New Ad</h2>
+</header>
+<div class="container">
+	<form class="form-horizontal">
+		<div class="form-group">
+			<div class="col-sm-offset-2">
+				<p><strong>Looking to Buy or Sell?</strong></p>
+				<div class="radio">
+					<label class="control-label">
+				    	<input type="radio" name="buy-or-sell" id="buying" value="buying" ng-model="buyOrSell" checked><strong>Buy</strong>
+				    </label>
+				</div>
+				<div class="radio">
+				  	<label class="control-label">
+				    	<input type="radio" name="buy-or-sell" id="selling" ng-model="buyOrSell" value="selling"><strong>Sell</strong>
+				  	</label>
+				</div>	
+			</div>
+		</div>	
+	  	<div class="form-group">
+	    	<label for="ad-name" class="col-sm-2 control-label">Name of Ad<span class="compulsury">*</span></label>
+	    	<div class="col-sm-10">
+	      		<input type="text" class="form-control" id="ad-name" placeholder="Ad Name" name="ad-name" ng-model="adName">
+	    	</div>
+	  	</div>
+
+	  	<div class="form-group" ng-if="seller">
+	    	<label for="ad-price" class="col-sm-2 control-label">Price<span class="compulsury">*</span></label>
+	    	<div class="col-sm-10">
+	      		<input type="number" ng-model="$parent.adPrice" class="form-control" id="ad-price" placeholder="Ad Price" name="ad-price">
+	    	</div>
+	  	</div>
+
+	  	<div class="form-group">
+	    	<label for="ad-description" class="col-sm-2 control-label">Description<span class="compulsury">*</span></label>
+	    	<div class="col-sm-10">
+	      		<textarea class="form-control" id="ad-description" placeholder="{{descrPlaceholder}}" name="ad-description" ng-model="adDescription"></textarea>
+	    	</div>
+	  	</div>
+
+	  	<div class="form-group">
+		    <label for="creator-name" class="col-sm-2 control-label">Creator Name</label>
+		    <div class="col-sm-10">
+	    		<input type="text" class="form-control" id="creator-name" placeholder="Creator Name" validates="true" name="creator-name" ng-model="adCreatorName">
+	    	</div>
+	  	</div>
+	 
+	 	<div class="form-group">
+		    <label for="creator-email" class="col-sm-2 control-label">Creator Email<span class="compulsury">*</span></label>
+		    <div class="col-sm-10">
+	      		<input type="email" class="form-control" id="creator-email" placeholder="Creator Email" validates="true" name="creator-email" ng-model="adCreatorEmail">
+	    	</div>
+	  	</div>
+
+	  	<div class="form-group">
+	    	<label for="creator-phone-number" class="col-sm-2 control-label">Creator Phone Number</label>
+	    	<div class="col-sm-10">
+	      		<input type="number" class="form-control" id="creator-phone-numer" placeholder="Phone Number" validates="true" name="creator-phone-numer" ng-model="adCreatorPhone">
+	    	</div>
+	  	</div>
+
+	  	<div class="form-group">
+	    	<label for="address" class="col-sm-2 control-label">Address</label>
+	    	<div class="col-sm-10">
+	      		<input type="text" class="form-control" id="address-numer" placeholder="Address" name="address" ng-model="address">
+	    	</div>
+	  	</div>
+
+	  	<div class="form-group">
+	    	<label for="town" class="col-sm-2 control-label">City/Town<span class="compulsury">*</span></label>
+	    	<div class="col-sm-10">
+	      		<input type="text" class="form-control" id="town" placeholder="City/Town" name="town" ng-model="town">
+	    	</div>
+	  	</div>
+
+	  	<div class="form-group">
+	    	<label for="state" class="col-sm-2 control-label">State<span class="compulsury">*</span></label>
+	    	<div class="col-sm-10">
+	      		<input type="text" class="form-control" id="state" placeholder="State" name="state" ng-model="state">
+	    	</div>
+	  	</div>
+
+	  	<div class="form-group">
+	    	<div class="col-sm-offset-2 col-sm-10">
+	      		<button type="submit" class="btn btn-default" ng-click="create()">Create!</button>
+	    	</div>
+	  	</div>
+	</form>
+</div>

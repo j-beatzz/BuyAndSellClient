@@ -1,0 +1,159 @@
+body {
+  width: 100%;
+  min-width: 1000px;
+}
+
+.menu {
+  position: absolute;
+  padding-top: 15px;
+  width: 300px;
+  right: 150px;
+}
+
+.nav {
+  width: auto !important;
+}
+
+.nav-container {
+  position: absolute;
+}
+
+.nav-item:hover {
+  background-color: #eeeeee;
+}
+
+.no-margin-padding {
+  padding: 0px !important;
+  margin: 0px !important;
+}
+
+.draw-border {
+  border: 1px solid #eeeeee;
+}
+
+.draw-border-top {
+  border-top: 1px solid #eeeeee;
+}
+
+.draw-border-bottom {
+  border-bottom: 1px solid #eeeeee;
+}
+
+.draw-border-left {
+  border-left: 1px solid #eeeeee;
+}
+
+.draw-border-right {
+  border-right: 1px solid #eeeeee;
+}
+
+.draw-border-t-a-b {
+  border-top: 1px solid #eeeeee;
+  border-bottom: 1px solid #eeeeee;
+}
+
+.draw-border-l-a-r {
+  border-left: 1px solid #eeeeee;
+  border-right: 1px solid #eeeeee;
+}
+
+.spacer {
+  height: 100px;
+}
+
+.submit-btn {
+  margin-top: 25px;
+}
+
+.result-item {
+  min-width: 500px;
+  padding: 0px;
+  margin-top: 0px;
+}
+
+.item-image {
+  width: 100px;
+  height: 100px;
+  background-color: #eeeeee;
+  float: left;
+}
+
+.item-body {
+  width: 100%;
+  background: red;
+  float: left;
+}
+
+.result-container {
+  min-width: 800px;
+}
+
+.side-bar {
+  min-width: 200px;
+}
+
+.side-bar {
+  height: 1000px;
+  background: #eeeeee;
+}
+
+.main {
+  height: 1000px;
+  padding: 0px !important;
+}
+
+.item {
+  margin: 0px;
+  width: 100%;
+  display: block;
+  position: relative;
+  padding: 5px;
+  cursor: pointer;
+}
+
+.item:hover {
+  border:  1px solid black;
+}
+
+.title {
+  width: 100%;
+  margin: 0px;
+  background-color: #eeeeee;
+  padding: 0px !important;
+}
+
+.body {
+  width: 100%;
+  margin: 0px;
+  display: block;
+  min-height: 150px;
+}
+
+.image {
+  height: 100px;
+  width: 100px;
+  position: relative;
+  float: left;
+  display: block;
+  background-color: #eeeeee;
+  margin-top: 5px;
+  margin-right: 5px;
+}
+
+.descr {
+  position: relative;
+  display: inline;
+}
+
+
+/* NEW AD HTML*/
+.error {
+  width: 100%;
+  padding: 10px;
+  z-index: 10000;
+  background-color: #eeeeee;
+  position: fixed;
+  color: red;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
