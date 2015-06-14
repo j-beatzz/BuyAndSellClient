@@ -14,7 +14,8 @@ angular.module('HuDeySell', [
   'ngResource',
   'ngRoute',
   'ngSanitize',
-  'ngTouch'
+  'ngTouch',
+  'ui.bootstrap'
 ]).config(function($routeProvider, $locationProvider, $httpProvider) {
   $routeProvider
   .when('/', {

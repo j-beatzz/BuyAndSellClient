@@ -50,6 +50,8 @@
 		<div class="col-md-5 col-sm-5 col-lg-5 col-xs-5 draw-border-t-a-b main">
 			<div ng-if="has_items">
 				<hds-item ng-repeat='d in $parent.ds_for_town' model="d"></hds-item>
+				
+				<pagination total-items="$parent.numberOfItems" ng-model="$parent.currentPage" max-size="$parent.paginationMaxSize" class="pagination-sm" boundary-links="true" ng-change="$parent.pageChange()"></pagination>
 			</div>
 		</div>
 
