@@ -13,6 +13,9 @@
     <!-- endbuild -->
     <!-- build:css(.tmp) styles/main.css -->
     <link rel="stylesheet" href="styles/main.css">
+    <!-- injector:css -->
+    <link rel="stylesheet" href="styles/main.css">
+    <!-- endinjector -->
     <!-- endbuild -->
   </head>
   <body ng-app="HuDeySell">
@@ -55,14 +58,16 @@
     <!-- endbower -->
     <!-- endbuild -->
 
-        <!-- build:js({.tmp,app}) scripts/scripts.js -->
-        <script src="scripts/app.js"></script>
-        <script src="scripts/controllers/app.controller.js"></script>
-        <script src="scripts/controllers/ad_item.controller.js"></script>
-        <script src="scripts/controllers/new_ad.controller.js"></script>
-        <script src="scripts/directives/ad_item/_ad-item.directive.js"></script>
-        <script src="scripts/services/HuDeySell.service.js"></script>
-        <script src="scripts/services/HuDeySellTempCache.service.js"></script>
+        <!-- build:js({.tmp,app}) scripts/scripts.js -->    
+          <!-- injector:js -->
+          <script src="scripts/app.js"></script>
+          <script src="scripts/controllers/ad_item.controller.js"></script>
+          <script src="scripts/controllers/app.controller.js"></script>
+          <script src="scripts/controllers/new_ad.controller.js"></script>
+          <script src="scripts/directives/ad_item/_ad-item.directive.js"></script>
+          <script src="scripts/services/huDeySell.service.js"></script>
+          <script src="scripts/services/huDeySellTempCache.service.js"></script>
+          <!-- endinjector -->
         <!-- endbuild -->
 
         <script>

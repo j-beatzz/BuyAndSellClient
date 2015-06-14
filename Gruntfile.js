@@ -14,6 +14,12 @@ module.exports = function (grunt) {
   // Load grunt tasks automatically
   require('load-grunt-tasks')(grunt);
 
+  require('jit-grunt')(grunt, {
+    injector: 'grunt-asset-injector'    
+  })
+
+  var injector = require('grunt-asset-injector')(grunt)
+
   // Time how long tasks take. Can help when optimizing build times
   require('time-grunt')(grunt);
 
@@ -62,6 +68,23 @@ module.exports = function (grunt) {
           '.tmp/styles/{,*/}*.css',
           '<%= yeoman.app %>/images/{,*/}*.{png,jpg,jpeg,gif,webp,svg}'
         ]
+      },
+      injectJS: {
+        files: [
+          '<%= yeoman.app %>/**/*.js'
+        ],
+        tasks: ['injector:scripts']
+      },
+      injectCss: {
+        files: [
+          '<%= yeoman.app %>/**/*.css'
+        ],
+        tasks: ['injector:css']
+      },
+      injectLess: {
+        files: [
+          '<%= yeoman.app %>/**/*.less'],
+        tasks: ['injector:less']
       }
     },
 
@@ -374,6 +397,70 @@ module.exports = function (grunt) {
         }
       }
     },
+
+    // For injecting new js, less and css files into index.html
+    injector: {
+      options: {
+
+      },
+      // Inject application script files into index.html (doesn't include bower)
+      scripts: {
+        options: {
+          transform: function(filePath) {
+            filePath = filePath.replace('/app/', '');
+            filePath = filePath.replace('/.tmp/', '');
+            return '<script src="' + filePath + '"></script>';
+          },
+          starttag: '<!-- injector:js -->',
+          endtag: '<!-- endinjector -->'
+        },
+        files: {
+          '<%= yeoman.app %>/index.html': [
+              ['{.tmp,<%= yeoman.app %>}/**/*.js',
+               '!{.tmp,<%= yeoman.app %>}/app.js',
+               // '!{.tmp,<%= yeoman.app %>}/app/**/*.spec.js',
+               // '!{.tmp,<%= yeoman.app %>}/app/**/*.mock.js'
+               ]
+            ]
+        }
+      },
+
+      // Inject component less into app.less
+      less: {
+        options: {
+          transform: function(filePath) {
+            filePath = filePath.replace('/app/', '');
+            return '@import \'' + filePath + '\';';
+          },
+          starttag: '// injector',
+          endtag: '// endinjector'
+        },
+        files: {
+          '<%= yeoman.app %>/app.less': [
+            '<%= yeoman.app %>/**/*.less',
+            '!<%= yeoman.app %>/app.less'
+          ]
+        }
+      },
+
+      // Inject component css into index.html
+      css: {
+        options: {
+          transform: function(filePath) {
+            filePath = filePath.replace('/app/', '');
+            filePath = filePath.replace('/.tmp/', '');
+            return '<link rel="stylesheet" href="' + filePath + '">';
+          },
+          starttag: '<!-- injector:css -->',
+          endtag: '<!-- endinjector -->'
+        },
+        files: {
+          '<%= yeoman.app %>/index.html': [
+            '<%= yeoman.app %>/**/*.css'
+          ]
+        }
+      }
+    },
   });
 
 
@@ -385,7 +472,9 @@ module.exports = function (grunt) {
     grunt.task.run([
       'clean:server',
       'wiredep',
+      // 'injector:less', 
       'concurrent:server',
+      'injector',
       'autoprefixer',
       'connect:livereload',
       'watch'
@@ -399,7 +488,9 @@ module.exports = function (grunt) {
 
   grunt.registerTask('test', [
     'clean:server',
+    // 'injector:less',
     'concurrent:test',
+    'injector',
     'autoprefixer',
     'connect:test',
     'karma'
@@ -410,7 +501,9 @@ module.exports = function (grunt) {
     'includeSource:dist',
     'wiredep',
     'useminPrepare',
+    // 'injector:less',
     'concurrent:dist',
+    'injector',
     'autoprefixer',
     'concat',
     'ngmin',
